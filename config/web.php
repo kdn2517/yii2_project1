@@ -54,6 +54,10 @@ $config = [
             ],
         ],
         
+        'cart' => [
+            'class' => 'app\models\Cart',
+        ]
+        
     ],
     'params' => $params,
 ];

@@ -28,9 +28,10 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'number'], 'required'],
+            [['name', 'description', 'number', 'price'], 'required'],
             [['name', 'description'], 'string'],
             [['number'], 'string', 'max' => 10],
+            [['category'], 'safe'],
         ];
     }
 
@@ -44,6 +45,26 @@ class Products extends \yii\db\ActiveRecord
             'name' => 'Name',
             'description' => 'Description',
             'number' => 'Number',
+            'image' => 'image',
+            'category' => 'Category',
         ];
+    }   
+    
+    public function saveImage($fileName) 
+    {
+        $this->image = $fileName;
+        return $this->save(false);
+    }
+    
+    public function getImage()
+    {
+        return($this->image) ? '/web/uploads/' . $this->image : '/web/uploads/no-photo.png';
+    }
+
+        
+    public function deleteImage() 
+    {
+        $imageUploadModel = new ImageUpload();
+        $imageUploadModel->deleteCurrentImage($this->image);
     }
 }

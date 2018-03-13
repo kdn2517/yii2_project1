@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Products;
+use app\models\ImageUpload;
+use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,7 +54,8 @@ class ProductsController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Products::find(),
         ]);
-
+        $this->view->params['pageTitle'] = 'CRUD';
+        $this->layout = 'alter';
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
@@ -66,6 +69,8 @@ class ProductsController extends Controller
      */
     public function actionView($id)
     {
+        $this->view->params['pageTitle'] = 'View';
+        $this->layout = 'alter';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -78,6 +83,8 @@ class ProductsController extends Controller
      */
     public function actionCreate()
     {
+        $this->view->params['pageTitle'] = 'Create';
+        $this->layout = 'alter';
         $model = new Products();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -98,6 +105,8 @@ class ProductsController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->view->params['pageTitle'] = 'Update';
+        $this->layout = 'alter';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -118,8 +127,10 @@ class ProductsController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->view->params['pageTitle'] = 'Delete';
+        $this->layout = 'alter';
         $this->findModel($id)->delete();
-
+        
         return $this->redirect(['index']);
     }
 
@@ -132,10 +143,31 @@ class ProductsController extends Controller
      */
     protected function findModel($id)
     {
+        $this->view->params['pageTitle'] = 'CRUD';
+        $this->layout = 'alter';
         if (($model = Products::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    public function actionSetImage($id)
+    {
+        $this->view->params['pageTitle'] = 'set image';
+        $this->layout = 'alter';
+        $model = new ImageUpload();
+        if(Yii::$app->request->isPost){
+            $products = $this->findModel($id);
+            $file = UploadedFile::getInstance($model, 'image');
+            
+            if($products->saveImage($model->uploadImage($file, $products->image))) {
+                return $this->redirect(['index']);
+            }
+        }
+        
+        return $this->render('image', [
+            'model' => $model,
+        ]);
     }
 }
