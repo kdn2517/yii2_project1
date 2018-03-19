@@ -16,7 +16,13 @@ class ImageUpload extends Model
             [['image'], 'file', 'extensions' => 'jpg,png,jpeg']
         ];
     }
-    
+/**
+ * 
+ * @param type $file
+ * @param type $currentImage
+ * @return type
+ * Изменить основную картинку
+ */    
     public function uploadImage($file, $currentImage)
     {
         $this->image = $file;

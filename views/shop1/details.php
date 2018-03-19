@@ -1,10 +1,11 @@
-		<div class="content details-page">
+<?php use yii\helpers\Html; ?>		
+<div class="content details-page">
 			<!---start-product-details--->
 			<div class="product-details">
 				<div class="wrap">
 					<ul class="product-head">
 						<li><a href="index">Home</a> <span>::</span></li>
-						<li class="active-page"><a href="products">Product Page</a></li>
+						<li class="active-page"><a href="products?id=<?=$product->category?>">Product Page</a></li>
 						<div class="clear"> </div>
 					</ul>
 				<script>
@@ -36,6 +37,9 @@
                                                                     <img class="etalage_source_image" src="/web/uploads/<?=$product->image?>" />
 								</a>
 							</li>
+                                                        <?php foreach($images as $image) { ?>
+                                                        <li><img class="etalage_source_image" src="/web/uploads/<?=$image->image?>" /></li>
+                                                        <?php } ?>
 						</ul>
 					</div>
 					<div class="details-left-info">
@@ -49,17 +53,21 @@
 								
 								<div class="clear"> </div>
 							</ul>
-							
+                                                    <div class="register-grids">
+                                                        <form id="form3" <!--action="/cart/add" method="GET"-->>
 							<ul class="prosuct-qty">
+                                                            <input type="hidden" value="<?=$product->id?>" name="productId">
 								<span>Количество (осталось <?=$product->number?> штук):</span>
-								<select>
+								<select name="number">
                                                                     <?php for($i = 1; $i<=$product->number; $i++) { ?>
-									<option><?=$i?></option>
+									<option value="<?=$i?>"><?=$i?></option>
                                                                     <?php } ?>
 								</select>
 							</ul>
-							<input type="button" value="add to cart" />
-							
+                                                        <input type="submit" value="Добавить в корзину" />
+                                                        
+                                                    </form>
+                                                    </div>
 						</div>
 					</div>
 					</div>

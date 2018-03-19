@@ -1,47 +1,20 @@
-<div class="content login-box">
-			<div class="login-main">
-				<div class="wrap">
-					<h1>CREATE AN ACCOUNT</h1>
-					<div class="register-grids">
-						<form> 
-								<div class="register-top-grid">
-										<h3>PERSONAL INFORMATION</h3>
-										<div>
-											<span>First Name<label>*</label></span>
-											<input type="text"> 
-										</div>
-										<div>
-											<span>Last Name<label>*</label></span>
-											<input type="text"> 
-										</div>
-										<div>
-											<span>Email Address<label>*</label></span>
-											<input type="text"> 
-										</div>
-										<div class="clear"> </div>
-											<a class="news-letter" href="#">
-												<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
-											</a>
-										<div class="clear"> </div>
-								</div>
-								<div class="clear"> </div>
-								<div class="register-bottom-grid">
-										<h3>LOGIN INFORMATION</h3>
-										<div>
-											<span>Password<label>*</label></span>
-											<input type="text">
-										</div>
-										<div>
-											<span>Confirm Password<label>*</label></span>
-											<input type="text">
-										</div>
-										<div class="clear"> </div>
-								</div>
-								<div class="clear"> </div>
-								<input type="submit" value="submit" />
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+<?php
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+?>
+<div class="wrap">
+            <div class="register-grids">
+                <?php $form = ActiveForm::begin() ?>
+<?= $form->field($model, 'username') ?>
+<?= $form->field($model, 'email') ?>
+<?= $form->field($model, 'password')->passwordInput() ?>
+<div class="form-group">
+ <div>
+ <?= Html::submitButton('Регистрация', ['class' => 'btn btn-success']) ?>
+ </div>
+</div>
+<?php ActiveForm::end() ?>
+            </div>
+</div>
+	

@@ -33,8 +33,8 @@
 							<!---//End-rate---->
                                                         <?php foreach($products as $product) { ?>
                                                         
-                                                        <div class="product-grid last-grid" onclick="location.href='details.html';"><?=$product->name?>
-							
+                                                        <div class="product-grid last-grid"><?=$product->name?>
+							<div class="myClass plus" dataContentId="<?=$product->id?>"><p>+</p></div>
 							<div class="product-pic">
                                                             <a href="details?id=<?=$product->id?>"><img src="/web/uploads/<?=$product->image?>" title="product-name" height="300px"/></a>
 							</div>

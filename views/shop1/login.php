@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 		<div class="login-left">
                     <h3>Добро пожаловать!</h3>
                     <p>Создав учетную запись Вы сможете то-то и то-то.</p>
-                    <a class="acount-btn" href="register.html">Зарегестрироваться</a>
+                    <a class="acount-btn" href="/shop1/signup">Зарегестрироваться</a>
                 </div>
 		<div class="login-right">
                     <h3>Вход</h3>

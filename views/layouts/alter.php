@@ -3,6 +3,8 @@
 use app\assets\AppAssetShop1;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
 
 AppAssetShop1::register($this);
 
@@ -84,12 +86,18 @@ $this->beginPage()
 </head>
 <?php $this->beginBody() ?>
 <body>
+    <?php
+    Modal::begin([
+        'id' => 'cart1',
+        'footer' => '<a href="/cart/cart" class="btn btn-primary">Перейти в корзину</a>'
+]);
+    Modal::end();
+    ?>
     <div class="header">
         <div class="top-header">
             <div class="wrap">
                 <div class="top-header-left">
                     <ul>
-                        
                         <script type="text/javascript">
                             $(function () {
                                 var $cart = $('#cart');
@@ -112,7 +120,14 @@ $this->beginPage()
                         
                         <li><a class="cart" href="#"><span id="clickme"> </span></a></li>
                         
-                        <div id="cart">Вставляем сюда <span>значения из корзины</span></div>
+                        <div id="cart"><span>
+                                <script>
+                                    $(function() {
+                                        $('#cart').load('/cart/view');
+                                    });
+                                </script>
+                            </span>
+                        </div>
                         
                         <script type="text/javascript">
                             $(function () {
@@ -160,7 +175,7 @@ $this->beginPage()
                     ['label' => 'Регистрация', 'url' => ['signup']]
                     ) : (Yii::$app->user->identity->role ?
                     (['label' => 'CRUD', 'url' => ['/products/index']]) : (
-                    ['label' => 'Корзина']
+                    ['label' => 'Корзина', 'url' =>['/cart/cart']]
                     )),
                     Yii::$app->user->isGuest ? (
                     ['label' => 'Войти', 'url' => ['login']]
@@ -214,9 +229,6 @@ $this->beginPage()
             </div>
         </div>
     </div>
-    <!----//End-bottom-header---->
-    <!---//End-header---->
-
 
 
 

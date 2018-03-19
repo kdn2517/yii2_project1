@@ -47,6 +47,7 @@ class Products extends \yii\db\ActiveRecord
             'number' => 'Number',
             'image' => 'image',
             'category' => 'Category',
+            'gallery' => 'Gallery'
         ];
     }   
     

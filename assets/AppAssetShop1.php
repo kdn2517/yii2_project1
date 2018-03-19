@@ -40,6 +40,7 @@ class AppAssetShop1 extends AssetBundle
         'shop1/js/modal.js',
         'shop1/js/owl.carousel.js',
 	'shop1/js/jquery.etalage.min.js',
+	'shop1/js/cart.js',
     ];
     
     

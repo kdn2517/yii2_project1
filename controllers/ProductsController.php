@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Products;
 use app\models\ImageUpload;
+use app\models\Image;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -22,11 +23,6 @@ class ProductsController extends Controller
     public function behaviors()
     {
         return [
-//            'verbs' => [
-//                'class' => VerbFilter::className(),
-//                'actions' => [
-//                    'delete' => ['POST'],
-//                ],
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'denyCallback' => function($rule, $action)
@@ -151,7 +147,12 @@ class ProductsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
+    /**
+     * 
+     * @param type $id
+     * @return type
+     * Установить картинку
+     */
     public function actionSetImage($id)
     {
         $this->view->params['pageTitle'] = 'set image';
@@ -169,5 +170,39 @@ class ProductsController extends Controller
         return $this->render('image', [
             'model' => $model,
         ]);
+    }
+    /**
+     * 
+     * @param type $id
+     * @return type
+     * Установить картинку в галерую
+     */
+    public function actionUpdateGallery($id)
+    {
+        $this->view->params['pageTitle'] = 'set image';
+        $this->layout = 'alter';
+        $model = new Image();
+        $images = Image::find()->where(['id_products' => $id])->all();
+        if(Yii::$app->request->isPost){
+            $file = UploadedFile::getInstance($model, 'image');
+            if($model->uploadImageGallery($file, $id)) {
+                return $this->redirect(['index']);
+            }
+        }
+        
+        return $this->render('gallery', [
+            'model' => $model,
+            'images' => $images,
+        ]);
+    }
+    /**
+     * Удалить картинку из галереи
+     */
+    public function actionDeleteImage()
+    {
+        $imageId = Yii::$app->request->get('imageId');
+        $image = Image::findOne(['id' => $imageId]);
+        unlink(Image::getFolder() . $image->image);
+        $image->delete();
     }
 }

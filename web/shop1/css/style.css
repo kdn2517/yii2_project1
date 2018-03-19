@@ -25,7 +25,51 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	background:#FFF;
 }
+.plus{
+    cursor: pointer;
+    background: green;
+    text-align: center;
+}
+.product-my {
+    display: inline-block;
+}
+.minus {
+    background: yellow;
+    text-align: center;
+    cursor: pointer;
+}
+.clean {
+    background: red;
+    text-align: center;
+    cursor: pointer;
+}
+
+.myClassInGallery { 
+    position: relative;
+    top: 33px;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+    background: black;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+}
 /*----start-wrap----*/
+.myClass {
+    position: absolute;  
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+    background: black;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+} 
 .wrap{
 	width:70%;
 	margin:0 auto;
@@ -40,7 +84,7 @@ body{
 }
 .top-header-center{
 	float: left;
-	width: 75%;
+	width: 50%;
 	padding: 0.25em;
 	padding: 0.4em;
 }
@@ -104,9 +148,10 @@ body{
 }
 #cart{
 	display:none;
+        z-index: 99;
 }
 #cart{
-	width: 12%;
+	width: 25%;
 	background-color: #08080B;
 	position: absolute;
 	padding: 0.9em 1em 1em 1em;
@@ -342,7 +387,7 @@ input[type=checkbox].css-checkbox13:checked + label i.css-label13 {
 }
 /*----*/
 /*----*/
-input[type=checkbox].css-checkbox14 + label i.css-label14 {
+/*input[type=checkbox].css-checkbox14 + label i.css-label14 {
 	height: 15px;
 	width: 17px;
 	display: inline-block;
@@ -351,14 +396,14 @@ input[type=checkbox].css-checkbox14 + label i.css-label14 {
 	background-position: 0 0px;
 	cursor: pointer;
 	background: url(../images/image-sprit.png) no-repeat -2px -222px;
-}
-input[type=checkbox].css-checkbox14:checked + label i.css-label14 {
+}*/
+/*input[type=checkbox].css-checkbox14:checked + label i.css-label14 {
 	background: url(../images/image-sprit.png) no-repeat -2px -81px;
 	height: 22px;
-}
+}*/
 /*----*/
 /*----*/
-input[type=checkbox].css-checkbox15 + label i.css-label15 {
+/*input[type=checkbox].css-checkbox15 + label i.css-label15 {
 	height: 15px;
 	width: 17px;
 	display: inline-block;
@@ -367,11 +412,11 @@ input[type=checkbox].css-checkbox15 + label i.css-label15 {
 	background-position: 0 0px;
 	cursor: pointer;
 	background: url(../images/image-sprit.png) no-repeat -2px -222px;
-}
-input[type=checkbox].css-checkbox15:checked + label i.css-label15 {
+}*/
+/*input[type=checkbox].css-checkbox15:checked + label i.css-label15 {
 	background: url(../images/image-sprit.png) no-repeat -2px -81px;
 	height: 22px;
-}
+}*/
 /*----*/
 .active1{
 	color: #08080B;
@@ -517,7 +562,7 @@ input[type=checkbox].css-checkbox15:checked + label i.css-label15 {
 .grid-social{
 	padding-bottom: 0.5em;
 }
-.more-product-info span{
+/*.more-product-info span{
 	width: 30px;
 	height: 30px;
 	display: block;
@@ -526,7 +571,7 @@ input[type=checkbox].css-checkbox15:checked + label i.css-label15 {
 	top: 0px;
 	right: 0;
 	cursor:pointer;
-}
+}*/
 /*----start-bottom-grids----*/
 .bottom-grids{
 	margin-top:2em;
@@ -1362,12 +1407,12 @@ h2.resp-accordion:first-child {
 .pro-rate li{
 	display:inline-block;
 }
-.product-rate label{
+/*.product-rate label{
 	width: 132px;
 	height: 24px;
 	display: inline-block;
 	background: url(../images/image-sprit.png) no-repeat -30px -122px;
-}
+}*/
 .pro-rate li a{
 	color: #08080B;
 	padding: 0.1em 0;
@@ -1983,7 +2028,7 @@ span.mail a:hover{
 		resize:none;
 	}
 	.top-header-center {
-		width: 50%;
+		width: 45%;
 	}
 	.product-info-cust {
 		width: 48%;
@@ -2130,7 +2175,7 @@ span.mail a:hover{
 		left: 36%;
 	}
 	#cart {
-		width: 20%;
+		width: 55%;
 	}
 	.product-box-head-left {
 		float: none;
@@ -2263,7 +2308,7 @@ span.mail a:hover{
 		left: 36%;
 	}
 	#cart {
-		width: 24%;
+		width: 55%;
 	}
 	.product-box-head-left {
 		float: none;
@@ -2429,7 +2474,7 @@ span.mail a:hover{
 		left: 36%;
 	}
 	#cart {
-		width: 32%;
+		width: 55%;
 	}
 	.product-box-head-left {
 		float: none;
@@ -2502,11 +2547,11 @@ span.mail a:hover{
 		height: 16px;
 		width: 17px;
 	}
-	input[type=checkbox].css-checkbox11 + label i.css-label11 {
+/*	input[type=checkbox].css-checkbox11 + label i.css-label11 {
 		height: 12px;
 		width: 17px;
 		background: url(../images/image-sprit.png) no-repeat 0px -158px;
-	}
+	}*/
 	.price-selection-tree input[type="checkbox"]+label {
 		height: 26px;
 		margin-right: 0.2em;
@@ -2661,7 +2706,7 @@ span.mail a:hover{
 		left: 31%;
 	}
 	#cart {
-		width: 32%;
+		width: 55%;
 	}
 	.product-box-head-left {
 		float: none;
@@ -2742,11 +2787,11 @@ span.mail a:hover{
 		height: 16px;
 		width: 17px;
 	}
-	input[type=checkbox].css-checkbox11 + label i.css-label11 {
+/*	input[type=checkbox].css-checkbox11 + label i.css-label11 {
 		height: 12px;
 		width: 17px;
 		background: url(../images/image-sprit.png) no-repeat 0px -158px;
-	}
+	}*/
 	.price-selection-tree input[type="checkbox"]+label {
 		height: 20px;
 		margin-right: 0.1em;
@@ -2769,13 +2814,13 @@ span.mail a:hover{
 		height: 34px;
 		padding: 0.15em 0;
 	}
-	.logo span {
+/*	.logo span {
 		width: 85px;
 		height: 37px;
 		display: inline-block;
 		background: url(../images/image-sprit.png) no-repeat -195px -25px;
 		margin-top: 0.67em;
-	}
+	}*/
 	.login-main h1 {
 		font-size: 1em;
 		padding: 0.5em 0;
@@ -2807,12 +2852,10 @@ span.mail a:hover{
         
         
         
-        
-        
 
-          .top-header-right {
+        .top-header-right {
             padding: 0;
             margin: 0;
         }
-        
+              
 }
